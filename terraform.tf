@@ -12,11 +12,18 @@ terraform {
     }
   }
 
-  backend "azurerm" {
-    resource_group_name  = "pratik-terraform"
-    storage_account_name = "pktfstatecontainer"
-    container_name       = "largestate"
-    key                  = "dev.tfstate"
+  # backend "azurerm" {
+  #   resource_group_name  = "pratik-terraform"
+  #   storage_account_name = "pktfstatecontainer"
+  #   container_name       = "largestate"
+  #   key                  = "dev.tfstate"
+  # }
+
+  cloud {
+    organization = "pratik-hc"
+    workspaces {
+      name = "large-state"
+    }
   }
 
   required_version = ">= 1.1.0"
